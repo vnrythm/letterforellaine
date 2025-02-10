@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Create and autoplay background music
   const bgMusic = document.createElement("audio");
-  bgMusic.src = "palagi (2).mp3";
+  bgMusic.src = "palagi.mp3";
   bgMusic.loop = true;
   bgMusic.volume = 0.8;
   document.body.appendChild(bgMusic);
