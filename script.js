@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bgMusic = document.createElement("audio");
   bgMusic.src = "palagi.mp3";
   bgMusic.loop = true;
-  bgMusic.volume = 0.0;
+  bgMusic.volume = 0.5;
   document.body.appendChild(bgMusic);
 
   function playMusic() {
