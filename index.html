@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Letter for Ellaine Carey H. Gijapon</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas id="heartsCanvas"></canvas>
+  <div id="message-container">
+    <div id="message">Hey!</div>
+  </div>
+  <div id="envelope-container" class="hidden">
+    <div id="envelope" class="close">
+      <div class="front flap"></div>
+      <div class="front pocket"></div>
+      <div class="letter">
+        <div class="words line1"></div>
+        <div class="words line2"></div>
+        <div class="words line3"></div>
+        <div class="words line4"></div>
+      </div>
+      <div class="hearts">
+        <div class="heart a1"></div>
+        <div class="heart a2"></div>
+        <div class="heart a3"></div>
+        <h3 class="anniversary-title">
+          <span class="smaller-text">Tap to open!</span><br />
+          <span class="smaller-text"> and there's more to read below! <3</span>
+        </h3>     
+      </div>
+    </div>
+  </div>
+  <div class="letter-paper">
+    <button id="close-btn" class="close-btn">CLOSE</button>
+    <p>
+      Dear [receiver],<br /><br />
+      Hey, I hope things are going well! I sent you this letter because I wanted to say that I have liked you for some time now. Back when we were at ****'s place while we were playing at the playground, that was the time when I fell for you the most. On the way home that day while we're chatting on the bus, I felt like the happiest man in the world because I was talking to the person that I like, and I just hoped that moment would last forever. I also noticed the little things about you, like how you fix your hair, the way you smile, and the vibes you give, which make me happy deep down from the inside. I know that we know little about each other, and that's why I would like to know you better and learn more about the deeper sides of you, whether it's good or bad. Of course I am not expecting an immediate answer, and I am willing to wait for your answer.<br /><br />
+      Yours truly,<br />
+      Nas
+    </p>
+  </div>  
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+
+  <div id="anniversary-section">
+    <div class="anniversary-container">
+      <h1 class="anniversary-title">
+        <span class="larger-text">Will you be my valentine</span><span> date?</span><br />
+        <span class="smaller-text">- your Maki <3</span>
+      </h1>                       
+      <div class="decorations">
+        <img src="flower.png" alt="flowers" class="flowers" />
+      </div>
+      <div class="notice-card">
+        <p>📩 <strong>NOTICE</strong><br />The person that sent you this likes you very much <.3</p>
+      </div>
+      <div class="photo-placeholder">
+        <img src="ec.jpeg" alt="Your love or you together" style="width:100%; max-width:500px;" />
+      </div>
+      <div class="favorites-section">
+        <p>💗 I think our best memories will always remain unphotographed.</p>
+      </div>
+      <div class="music-section">
+        <p>🎵 Even if our February feels bitter, here’s some music for you ^^</p>
+        <div class="music-list">
+          <iframe class="music-frame" src="https://open.spotify.com/embed/track/1K0rybxoxW5svDYwXezXyN?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-frame" src="https://open.spotify.com/embed/track/06IkOr83qPqa3yYvrIjgxp?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe class="music-frame" src="https://open.spotify.com/embed/track/683vYd6JzbsguUFrX5VeG9?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>      
+    </div>  
+  </div>
+
+  <!-- Background music -->
+  <audio id="background-music" src="palagi.mp3" loop autoplay></audio>
+
+  <style>
+    .music-list iframe {
+      width: 100%; /* Full width of its container */
+      height: 500px; /* Set a sufficient height */
+      border-radius: 12px; /* Rounded corners */
+      margin-top: 20px; /* Optional spacing */
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+      .music-list iframe {
+        height: 300px; /* Adjust height on smaller screens */
+      }
+    }
+  
+    .music-list {
+      max-width: 100%; /* Full width */
+      margin: 0 auto; /* Center the iframe */
+    }
+  </style>
+
+  <style>
+    html, body {
+      height: auto;
+      overflow-y: auto;
+      background-size: cover;
+      background-position: center;
+    }
+    #anniversary-section {
+      background-color: #f5f5fa;
+      padding: 14px;
+      text-align: center;
+      margin-top: 40vh;
+    }
+
+    .anniversary-title {
+      font-size: 25px;
+      color: #ff6699;
+      font-family: 'Caveat', cursive;
+    }
+
+    .anniversary-title span {
+      font-size: 19px;
+    }
+
+    .decorations img {
+      width: 55px;
+      margin: 4px;
+    }
+
+    .notice-card, .photo-placeholder, .favorites-section, .music-section {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 8px auto;
+      max-width: 80%;
+    }
+
+    @media (max-width: 600px) {
+      #anniversary-section {
+        padding: 12px;
+        margin-top: 40vh;
+      }
+      .anniversary-title {
+        font-size: 20px;
+      }
+      .anniversary-title span {
+        font-size: 18px;
+      }
+      .decorations img {
+        width: 50px;
+      }
+      .notice-card, .photo-placeholder, .favorites-section, .music-section {
+        padding: 8px;
+        max-width: 90%;
+      }
+    }
+  </style>
+
+  <script>
+    // Control background music based on Spotify track playback
+    const spotifyIframe = document.getElementById('spotify-iframe');
+    const backgroundMusic = document.getElementById('background-music');
+
+    let currentSpotifyTrack = null;
+
+    // Listen for changes in the Spotify iframe player state
+    spotifyIframe.onload = function() {
+      // If the Spotify player is playing, stop the background music
+      spotifyIframe.addEventListener('play', function() {
+        backgroundMusic.pause(); // Pause background music
+      });
+
+      // When the user switches tracks, stop the current background music
+      spotifyIframe.addEventListener('pause', function() {
+        backgroundMusic.play(); // Start background music again if Spotify is paused
+      });
+    };
+
+    // Ensure background music starts automatically
+    backgroundMusic.play();
+  </script>
+
+</body>
+</html>
