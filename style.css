@@ -280,16 +280,23 @@ filter: blur(2.4px);
   padding: 5px 0;
 }
 
-.music-item iframe {
-  margin-right: 20px; /* Optional space for padding between text and player */
+.music-list iframe {
+  width: 100%; /* Full width of its container */
+  height: 500px; /* Set a sufficient height */
+  border-radius: 12px; /* Rounded corners */
+  margin-top: 20px; /* Optional spacing */
+  box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
 }
 
+/* Responsive styles for smaller screens */
 @media (max-width: 600px) {
-  .music-frame {
-    width: 200px; /* Adjust smaller on mobile */
-    height: 35px;
+  .music-list iframe {
+    height: 300px; /* Adjust height on smaller screens */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    border-radius: 10px; /* Optional: Smaller border radius on mobile */
   }
 }
+
 
 
 
