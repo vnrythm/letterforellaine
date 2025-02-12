@@ -239,13 +239,7 @@ filter: blur(2.4px);
   }
 }
 
-.music-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  margin-top: 20px;
-}
+
 
 
 .anniversary-title {
@@ -268,23 +262,154 @@ filter: blur(2.4px);
 
 .music-list {
   display: flex;
-  flex-direction: column;  /* Stack the iframes vertically */
-  align-items: center;  /* Center them horizontally */
-  gap: 20px;  /* Add space between each iframe */
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px; /* Space between each item */
 }
 
 .music-frame {
-  width: 80%;  /* Adjust width to fit well on the screen */
-  height: 100px;  /* Increase height for better visibility */
-  border-radius: 12px;  /* Rounded corners */
+  width: 350px !important; /* Compact width */
+  height: 80px !important; /* Compact height */
+  border-radius: 8px;
+}
+
+.music-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Align items to the left */
+  padding: 5px 0;
+}
+
+.music-item iframe {
+  margin-right: 20px; /* Optional space for padding between text and player */
 }
 
 @media (max-width: 600px) {
   .music-frame {
-    width: 90%;  /* Adjust width for smaller screens */
-    height: 80px;  /* Slightly reduce height on smaller screens */
+    width: 200px; /* Adjust smaller on mobile */
+    height: 35px;
   }
 }
 
 
+
+.hidden {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* Push content to the bottom */
+}
+
+.response-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Ensure it’s at the bottom of the page */
+}
+
+.response-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Footer Styling */
+#footer {
+  text-align: center;
+  font-size: 14px;
+  color: grey; /* Set font color to grey */
+  background-color: transparent; /* Remove black background */
+  padding: 10px;
+  margin-top: 20px; /* Add space above the footer */
+}
+
+.photo-placeholder img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px; /* Adjust for rounded corners */
+}
+
+/* Ensure "Yes" and "No" buttons are side by side */
+.response-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+  flex-direction: row; /* Makes buttons stay in a row */
+  align-items: center;
+}
+
+/* Yes & No Button Styles */
+.response-btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 25px;
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  font-family: 'arial', cursive; /* Apply Caveat font */
+}
+
+.response-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Hide "Yes" & "No" when clicked */
+.hidden {
+  display: none;
+}
+
+/* Make sure the GIF is centered */
+#gif-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#gif-container img {
+  max-width: 300px;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Style for response text (matches valentine title) */
+.valentine-text {
+  font-size: 30px;
+  font-family: 'Caveat', cursive; /* Ensure it matches the title */
+  color: #ff6699;
+  margin-top: 15px;
+}
+
+/* Fix "Reset" button at the bottom-right corner */
+#reset-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  font-size: 12px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'arial', cursive; /* Apply Caveat font */
+}
+
+#reset-btn:hover {
+  background-color: #cc0000;
+}

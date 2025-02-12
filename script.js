@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const heartImage = new Image();
   heartImage.src = "snoopy.png";
 
-
-  
+  // Function to resize canvas
   function resizeCanvas() {
     heartsCanvas.width = window.innerWidth;
     heartsCanvas.height = window.innerHeight;
@@ -32,14 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.style.backgroundColor = "#FFC0CB"; // Set background to pink
 
   const envelope = document.getElementById("envelope");
-  
   envelope.style.backgroundColor = "#99caff"; // Light pink envelope
 
   // Create and autoplay background music
   const bgMusic = document.createElement("audio");
   bgMusic.src = "palagi.mp3";
   bgMusic.loop = true;
-  bgMusic.volume = 0.3;
+  bgMusic.volume = 0.4;
   document.body.appendChild(bgMusic);
 
   function playMusic() {
@@ -115,31 +113,154 @@ document.addEventListener("DOMContentLoaded", () => {
   resizeCanvas();
   createHearts(14);
   animateHearts();
+
+  // Event listeners for Yes and No buttons
+  const yesBtn = document.getElementById("yes-btn");
+  const noBtn = document.getElementById("no-btn");
+
+  yesBtn.addEventListener("click", () => {
+    // Save response in localStorage
+    localStorage.setItem("valentine-response", "yes");
+
+    // You can add any additional action or display a message here instead of redirecting
+    alert("You chose YES! 💖");
+  });
+
+  noBtn.addEventListener("click", () => {
+    // Save response in localStorage
+    localStorage.setItem("valentine-response", "no");
+
+    // You can add any additional action or display a message here instead of redirecting
+    alert("You chose NO. 💔");
+  });
 });
 
-const canvas = document.getElementById('heartsCanvas');
-const ctx = canvas.getContext('2d');
+const closeBtn = document.getElementById("close-btn");
+console.log(closeBtn); // Should not be null
 
-const heartImage = new Image();
-heartImage.src = 'heart.png'; // Make sure to set the correct image path
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    hideLetterPaper();
+  });
+} else {
+  console.log("Close button not found in the DOM");
+}
 
-heartImage.onload = () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
 
-  function drawHearts() {
-    for (let i = 0; i < 10; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      const scale = Math.random() * 0.1 + 0.05;  // Random size for hearts
-      ctx.drawImage(heartImage, x, y, heartImage.width * scale, heartImage.height * scale);
-    }
-    requestAnimationFrame(drawHearts);
-  }
+function hideLetterPaper() {
+  console.log("hideLetterPaper() triggered!");
   
-  drawHearts();
-};
+  const letterPaper = document.querySelector(".letter-paper");
+  const heartsCanvas = document.getElementById("heartsCanvas");
+  const envelope = document.getElementById("envelope");
 
-document.getElementById("close-btn").addEventListener("click", function() {
-  document.querySelector(".letter-paper").style.display = "none";
+  if (!letterPaper) {
+    console.log("Letter paper element not found!");
+    return;
+  }
+
+  heartsCanvas.classList.remove("blur-background");
+  envelope.classList.remove("blur-background");
+
+  letterPaper.style.visibility = "hidden";
+  letterPaper.style.opacity = "0";
+  letterPaper.style.transform = "translate(-50%, -50%) scale(0.8)";
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yesBtn = document.getElementById("yes-btn");
+  const noBtn = document.getElementById("no-btn");
+  const buttonContainer = document.getElementById("button-container");
+  const gifContainer = document.getElementById("gif-container");
+  const responseGif = document.getElementById("response-gif");
+  const responseText = document.getElementById("response-text");
+  const resetBtn = document.getElementById("reset-btn");
+
+  // Load saved response from localStorage
+  const savedResponse = localStorage.getItem("valentine-response");
+  if (savedResponse) {
+    showGif(savedResponse);
+  }
+
+  yesBtn.addEventListener("click", () => {
+    localStorage.setItem("valentine-response", "yes");
+    showGif("yes");
+  });
+
+  noBtn.addEventListener("click", () => {
+    localStorage.setItem("valentine-response", "no");
+    showGif("no");
+  });
+
+  resetBtn.addEventListener("click", () => {
+    localStorage.removeItem("valentine-response");
+    buttonContainer.classList.remove("hidden");
+    gifContainer.classList.add("hidden");
+    resetBtn.classList.add("hidden");
+  });
+
+  function showGif(response) {
+    if (response === "yes") {
+      responseGif.src = "happy.gif"; // Change to your actual happy GIF
+      responseText.textContent = "";
+    } else {
+      responseGif.src = "sad.gif"; // Change to your actual sad GIF
+      responseText.textContent = "Nah, you will be my valentine!";
+    }
+
+    buttonContainer.classList.add("hidden"); // Hide buttons
+    gifContainer.classList.remove("hidden"); // Show GIF
+    resetBtn.classList.remove("hidden"); // Show reset button
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yesBtn = document.getElementById("yes-btn");
+  const noBtn = document.getElementById("no-btn");
+  const buttonContainer = document.getElementById("button-container");
+  const gifContainer = document.getElementById("gif-container");
+  const responseGif = document.getElementById("response-gif");
+  const responseText = document.getElementById("response-text");
+  const resetBtn = document.getElementById("reset-btn");
+
+  // Load saved response from localStorage
+  const savedResponse = localStorage.getItem("valentine-response");
+  if (savedResponse) {
+    showGif(savedResponse);
+  }
+
+  yesBtn.addEventListener("click", () => {
+    localStorage.setItem("valentine-response", "yes");
+    showGif("yes");
+  });
+
+  noBtn.addEventListener("click", () => {
+    localStorage.setItem("valentine-response", "no");
+    showGif("no");
+  });
+
+  resetBtn.addEventListener("click", () => {
+    localStorage.removeItem("valentine-response");
+    buttonContainer.classList.remove("hidden");
+    gifContainer.classList.add("hidden");
+    responseText.classList.add("hidden");
+    resetBtn.classList.add("hidden");
+  });
+
+  function showGif(response) {
+    buttonContainer.classList.add("hidden"); // Hide buttons
+
+    if (response === "yes") {
+      responseGif.src = "happy1.gif"; // Replace with actual happy GIF
+      responseText.textContent = "Yayyyy! YAHOOO!! <3";
+    } else {
+      responseGif.src = "happy.gif"; // Replace with actual sad GIF
+      responseText.textContent = "Nah, you'll be my valentine!";
+    }
+
+    responseText.classList.remove("hidden"); // Show text
+    gifContainer.classList.remove("hidden"); // Show GIF
+    resetBtn.classList.remove("hidden"); // Show reset button
+  }
 });
