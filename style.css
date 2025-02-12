@@ -165,9 +165,6 @@ font-size: 22px;
 font-family:  Arial, sans-serif;
  text-align: justify;
 line-height: 40px;
-background-image: 
-repeating-linear-gradient(transparent 0 39px, #999 39px 40px, transparent 40px),
-linear-gradient(#eee, #edecee);
 background-repeat: no-repeat;
 background-size: 90% 100%, 100%;
 background-position: center 20px, 0 0;
@@ -178,6 +175,8 @@ opacity: 0;
 visibility: hidden;
 transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
 }
+
+
 
 .letter-paper.visible {
 opacity: 1;
@@ -412,4 +411,125 @@ body {
 
 #reset-btn:hover {
   background-color: #cc0000;
+}
+
+
+.letter-paper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  width: 650px;
+  max-height: 80vh; /* Limits height for scrolling */
+  font-size: 22px;
+  font-family: 'Caveat', cursive;
+  text-align: justify;
+  line-height: 42px; /* Ensures text aligns with notebook lines */
+  background-color: #e7e7e7; /* Keeps your original notebook feel */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  overflow-y: auto; /* Enable scrolling */
+  border: 2px solid #ffb6c1;
+  background-attachment: local; /* Fixes the background scroll issue */
+}
+
+.letter-paper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  width: 650px;
+  max-height: 80vh; 
+  font-size: 22px;
+  font-family: 'Caveat', cursive;
+  text-align: justify;
+  line-height: 42px;
+  background-color: #fffaf0; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  z-index: 100;
+  opacity: 0; /* Starts hidden */
+  visibility: hidden;
+  overflow-y: auto; /* Enable scrolling */
+  border: 2px solid #ffb6c1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Make it visible only when triggered */
+.letter-paper.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Scrollbar width */
+.letter-paper::-webkit-scrollbar {
+  width: 10px; /* Adjust thickness */
+}
+
+/* Scrollbar Track (Background) */
+.letter-paper::-webkit-scrollbar-track {
+  background: #ffe6eb; /* Light pink background */
+  border-radius: 10px;
+}
+
+/* Scrollbar Handle */
+.letter-paper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff3366, #ff6699); /* Red-pink gradient */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Scrollbar Handle on Hover */
+.letter-paper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff1a4d, #ff3385); /* Darker pink */
+}
+
+.letter-content {
+  font-size: 22px;  /* Default font size */
+  font-family: Arial, sans-serif;  /* Use Arial font */
+}
+
+/* Adjust font size for smaller screens (e.g., mobile) */
+@media (max-width: 600px) {
+  .letter-content {
+    font-size: 18px;  /* Adjust the font size for smaller screens */
+  }
+}
+
+
+#close-btn {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0; /* Adds space and centers it */
+  padding: 10px 20px;
+  font-size: 18px;
+  font-family: 'Caveat', cursive; /* Matches the notebook font */
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff3366, #ff6699); /* Red-pink gradient */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease-in-out;
+}
+
+/* Hover Effect */
+#close-btn:hover {
+  background: linear-gradient(135deg, #ff1a4d, #ff3385); /* Darker pink */
+  transform: scale(1.1);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Click Effect */
+#close-btn:active {
+  transform: scale(0.95);
 }

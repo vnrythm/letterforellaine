@@ -114,6 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
   createHearts(14);
   animateHearts();
 
+
+
   // Event listeners for Yes and No buttons
   const yesBtn = document.getElementById("yes-btn");
   const noBtn = document.getElementById("no-btn");
@@ -177,28 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const responseText = document.getElementById("response-text");
   const resetBtn = document.getElementById("reset-btn");
 
-  // Load saved response from localStorage
-  const savedResponse = localStorage.getItem("valentine-response");
-  if (savedResponse) {
-    showGif(savedResponse);
-  }
 
-  yesBtn.addEventListener("click", () => {
-    localStorage.setItem("valentine-response", "yes");
-    showGif("yes");
-  });
-
-  noBtn.addEventListener("click", () => {
-    localStorage.setItem("valentine-response", "no");
-    showGif("no");
-  });
-
-  resetBtn.addEventListener("click", () => {
-    localStorage.removeItem("valentine-response");
-    buttonContainer.classList.remove("hidden");
-    gifContainer.classList.add("hidden");
-    resetBtn.classList.add("hidden");
-  });
 
   function showGif(response) {
     if (response === "yes") {
@@ -224,11 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const responseText = document.getElementById("response-text");
   const resetBtn = document.getElementById("reset-btn");
 
-  // Load saved response from localStorage
-  const savedResponse = localStorage.getItem("valentine-response");
-  if (savedResponse) {
-    showGif(savedResponse);
-  }
 
   yesBtn.addEventListener("click", () => {
     localStorage.setItem("valentine-response", "yes");
@@ -264,3 +240,50 @@ document.addEventListener("DOMContentLoaded", () => {
     resetBtn.classList.remove("hidden"); // Show reset button
   }
 });
+
+
+
+
+function submitToGoogleForm(response) {
+  let formURL = "https://docs.google.com/forms/d/e/1s4DTdxoY3f6UCxVWt7OoamdOt347i9_fbp0uPyxCCNM/formResponse";
+  
+  // Use the correct entry ID copied from the form
+  let entryID = "entry.980724091";  // Correct Entry ID from your form
+
+  // Construct the full URL
+  let fullURL = `${formURL}?${entryID}=${response}&submit=Submit`;
+
+  // Submit the response
+  fetch(fullURL, { mode: "no-cors" })
+    .then(() => {
+      console.log("✅ Response submitted successfully!");
+      alert(`Response "${response}" submitted successfully! 🎉`);
+    })
+    .catch((error) => {
+      console.error("❌ Error submitting response:", error);
+      alert("Something went wrong while submitting the response.");
+    });
+}
+
+// Attach event listeners to the buttons
+document.getElementById("yes-btn").addEventListener("click", () => submitToGoogleForm("Yes"));
+document.getElementById("no-btn").addEventListener("click", () => submitToGoogleForm("No"));
+
+
+
+
+async function saveResponse(response) {
+  const url = 'https://script.google.com/macros/s/AKfycbxej6aHE-2-0tTdpJpDkAbIS6j_s2jR40lMoGDVCSs6lmfBfq0HiFCmH84TUH2m3v5k6w/exec';  // Paste the URL from your Google Apps Script Web App
+  const params = {
+    method: 'POST',
+    body: new URLSearchParams({ response }),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  };
+
+  await fetch(url, params);
+  alert(`Response "${response}" saved successfully! 🎉`);
+}
+
+// Attach event listeners to buttons
+document.getElementById("yes-btn").addEventListener("click", () => saveResponse("Yes"));
+document.getElementById("no-btn").addEventListener("click", () => saveResponse("No"));
