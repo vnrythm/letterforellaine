@@ -493,7 +493,7 @@ body {
 }
 
 .letter-content {
-  font-size: 22px;  /* Default font size */
+  font-size: 26px;  /* Default font size */
   font-family: Arial, sans-serif;  /* Use Arial font */
 }
 
@@ -532,4 +532,15 @@ body {
 /* Active Click Effect */
 #close-btn:active {
   transform: scale(0.95);
+}
+
+
+.letter-paper {
+  font-size: 36px !important;  /* Increased font size */
+  font-family: 'Caveat', cursive !important;  /* Use Caveat font */
+}
+
+.letter-content {
+  font-size: 36px !important;  /* Increased font size */
+  font-family: 'Caveat', cursive !important;  /* Use Caveat font */
 }
